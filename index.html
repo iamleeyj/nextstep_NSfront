@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextStep 주식예측 - 메인</title>
+  <link rel="stylesheet" href="style.css" /> 
+</head>
+<body>
+  <div class="container">
+    <!-- 좌측 사이드바 -->
+    <aside class="sidebar">
+      <img src="nextstep_logo.jpg" alt="NextStep 로고" class="logo" />
+      <nav class="menu-top">
+        <a href="#" class="menu-item active">메인</a>
+        <a href="#" class="menu-item">주식예측</a>
+      </nav>
+      <nav class="menu-bottom">
+        <a href="#" class="menu-item">환경설정</a>
+        <a href="#" class="menu-item">로그아웃</a>
+      </nav>
+    </aside>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="main-content">
+      <h1 class="page-title">메인</h1>
+
+      <!-- 위젯 박스 4개 (코스피, 환율, 유가) -->
+      <div class="widget-container">
+        <div class="widget" id="kospi-widget">
+          <h2>코스피</h2>
+          <p class="subtitle">전일 대비 종가</p>
+          <p class="price" id="kospi-price">2,400.25 <span class="change" id="kospi-change">+12.34</span></p>
+        </div>
+
+        <div class="widget" id="exchange-widget">
+          <h2>환율</h2>
+          <p class="subtitle">환율 전일 종가</p>
+          <p class="price" id="exchange-price">1,321.44 <span class="change" id="exchange-change">-5.22</span></p>
+        </div>
+
+        <div class="widget" id="oil-widget">
+          <h2>유가</h2>
+          <p class="subtitle">유가 전일 종가</p>
+          <p class="price" id="oil-price">78.55 <span class="change" id="oil-change">+1.12</span></p>
+        </div>
+      </div>
+
+      <!-- 거래량 표 -->
+      <div class="volume-table">
+        <h2>거래량</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>종목</th>
+              <th>거래량</th>
+              <th>증감값(원)</th>
+              <th>증감률(%)</th>
+            </tr>
+          </thead>
+          <tbody id="volume-body">
+            <!-- 예시 데이터 -->
+            <tr>
+              <td>삼성전자</td>
+              <td>1,234,567</td>
+              <td class="up">+450</td>
+              <td class="up">+0.75%</td>
+            </tr>
+            <tr>
+              <td>LG에너지솔루션</td>
+              <td>987,654</td>
+              <td class="down">-320</td>
+              <td class="down">-1.15%</td>
+            </tr>
+            <!-- JS로 동적 추가도 가능 -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
