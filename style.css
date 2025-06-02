@@ -126,3 +126,22 @@ body {
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
 }
+
+
+
+
+.time-notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(96, 165, 250, 0.8); /* 파란 반투명 배경 */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Pretendard', sans-serif; /* 폰트가 없다면 기본 산세리프 */
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  user-select: none;
+}

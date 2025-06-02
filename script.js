@@ -63,3 +63,51 @@ loadChartData('kospi-widget', 'data/kospi.json');
 loadChartData('exchange-widget', 'data/exchange.json');
 loadChartData('oil-widget', 'data/oil.json');
 
+// 향후 API 연동 구조 예시
+document.addEventListener('DOMContentLoaded', () => {
+  // 종목 클릭 시 그래프 갱신 (기능 예시)
+  const stockTable = document.querySelector('.stock-table tbody');
+  stockTable.addEventListener('click', (e) => {
+    const row = e.target.closest('tr');
+    if (!row) return;
+    const stockName = row.children[0].textContent;
+    document.querySelector('.graph-box .box-title').textContent = stockName;
+  });
+});
+
+/* 시간 */
+function padZero(num) {
+  return num < 10 ? '0' + num : num;
+}
+
+function updateTimeNotification() {
+  const now = new Date();
+
+  // 현재 날짜 및 시간
+  const year = now.getFullYear();
+  const month = padZero(now.getMonth() + 1);
+  const date = padZero(now.getDate());
+  const hours = padZero(now.getHours());
+  const minutes = padZero(now.getMinutes());
+  const seconds = padZero(now.getSeconds());
+
+  // 어제 날짜 계산
+  const yesterday = new Date(now);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yYear = yesterday.getFullYear();
+  const yMonth = padZero(yesterday.getMonth() + 1);
+  const yDate = padZero(yesterday.getDate());
+
+  const timeNotification = document.getElementById('timeNotification');
+  if (!timeNotification) return;
+
+  timeNotification.innerHTML = `
+    현재 시간: ${year}-${month}-${date} ${hours}:${minutes}:${seconds} <br>
+    모든 데이터는 어제 날짜인 <strong>${yYear}-${yMonth}-${yDate}</strong> 기준입니다.
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateTimeNotification();
+  setInterval(updateTimeNotification, 1000);
+});

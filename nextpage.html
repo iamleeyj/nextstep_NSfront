@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextStep - 주식예측</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="next-style.css" />
+</head>
+<body>
+<!-- 오른쪽 상단 고정 시간 알림창 -->
+  <div id="timeNotification" class="time-notification"></div>
+
+  <div class="container">
+    <!-- 좌측 사이드바 -->
+    <aside class="sidebar">
+      <img src="nextstep_logo.jpg" alt="NextStep 로고" class="logo" />
+      <nav class="menu-top">
+        <a href="index.html" class="menu-item">메인</a>
+        <a href="nextpage.html" class="menu-item active">주식예측</a>
+      </nav>
+      <nav class="menu-bottom">
+        <a href="#" class="menu-item">환경설정</a>
+        <a href="#" class="menu-item">로그아웃</a>
+      </nav>
+    </aside>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+      <h1 class="page-title">주식 예측</h1>
+
+      <div class="analysis-wrapper">
+        <!-- 종목 선택 -->
+        <div class="stock-table">
+          <h2 class="sub-title">종목선택</h2>
+          <table>
+            <thead>
+              <tr><th>종목명</th><th>종목가격 (₩)</th></tr>
+            </thead>
+            <tbody>
+              <!-- 임시 데이터 -->
+              <tr><td>삼성전자</td><td>65,400</td></tr>
+              <tr><td>카카오</td><td>45,200</td></tr>
+              <tr><td>LG화학</td><td>520,000</td></tr>
+              <tr><td>현대차</td><td>188,000</td></tr>
+              <tr><td>셀트리온</td><td>173,500</td></tr>
+              <tr><td>네이버</td><td>206,000</td></tr>
+              <tr><td>SK하이닉스</td><td>134,000</td></tr>
+              <tr><td>삼성SDI</td><td>546,000</td></tr>
+              <tr><td>포스코홀딩스</td><td>410,000</td></tr>
+              <tr><td>한화솔루션</td><td>43,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 그래프 -->
+        <div class="graph-box">
+          <h2 class="box-title">삼성전자</h2>
+          <div class="filter">
+            <button>15일 전</button>
+            <button>한달 전</button>
+            <button>일년 전</button>
+          </div>
+          <canvas id="stockChart"></canvas>
+        </div>
+
+        <!-- 주식 예측 결과 -->
+        <div class="result-box">
+          <h2>주식예측결과</h2>
+          <div class="result-row"><span>일주일 뒤</span><span class="percent up">+62%</span></div>
+          <div class="result-row"><span>한달 뒤</span><span class="percent down">-12%</span></div>
+          <div class="result-row"><span>일년 뒤</span><span class="percent up">+105%</span></div>
+        </div>
+
+
+<div class="recommend-box">
+  <h2>매수/매도 추천</h2>
+  <table>
+    <colgroup>
+      <col style="width: 20%;">
+      <col style="width: 50%;">
+      <col style="width: 30%;">
+    </colgroup>
+    <thead>
+      <tr><th>종목ID</th><th>종목명</th><th>상태</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0001</td><td>삼성전자</td><td><span class="badge buy">Buy</span></td></tr>
+      <tr><td>0002</td><td>카카오</td><td><span class="badge sell">Sell</span></td></tr>
+      <tr><td>0003</td><td>LG화학</td><td><span class="badge long">Long</span></td></tr>
+      <tr><td>0004</td><td>현대차</td><td><span class="badge short">Short</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="next-script.js"></script>
+</body>
+</html>
