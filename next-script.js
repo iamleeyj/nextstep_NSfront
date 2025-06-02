@@ -119,7 +119,17 @@ document.addEventListener('DOMContentLoaded', () => {
     chart.data.datasets[0].data = data.map(v => Math.floor(v * (0.9 + Math.random() * 0.2)));
 
     chart.update();
+
+      // 👉 여기서 예측 결과/추천도 갱신
+    updatePredictionResult(selectedStock);
+    updateRecommendation(selectedStock);
+    
   });
+    // ✅ 초기 진입 시 삼성전자를 자동으로 선택
+  const firstRow = stockTable.querySelector('tr');
+  if (firstRow) {
+    firstRow.click();
+  }
 });
 
 
@@ -159,3 +169,107 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTimeNotification();
   setInterval(updateTimeNotification, 1000);
 });
+
+
+/* ================== */
+// 종목별 예측 및 추천 데이터
+const stockData = {
+  '삼성전자': {
+    prediction: ['+62%', '-12%', '+105%'],
+    recommendation: 'Buy',
+  },
+  '카카오': {
+    prediction: ['+20%', '+5%', '+60%'],
+    recommendation: 'Sell',
+  },
+  'LG화학': {
+    prediction: ['+40%', '-10%', '+90%'],
+    recommendation: 'Long',
+  },
+  '현대차': {
+    prediction: ['-5%', '-8%', '+30%'],
+    recommendation: 'Short',
+  },
+  '셀트리온': {
+    prediction: ['+10%', '+12%', '+80%'],
+    recommendation: 'Buy',
+  },
+  '네이버': {
+    prediction: ['-15%', '-25%', '+10%'],
+    recommendation: 'Sell',
+  },
+  'SK하이닉스': {
+    prediction: ['+5%', '+2%', '+35%'],
+    recommendation: 'Buy',
+  },
+  '삼성SDI': {
+    prediction: ['+8%', '+3%', '+45%'],
+    recommendation: 'Long',
+  },
+  '포스코홀딩스': {
+    prediction: ['-2%', '+1%', '+15%'],
+    recommendation: 'Sell',
+  },
+  '한화솔루션': {
+    prediction: ['+12%', '+9%', '+33%'],
+    recommendation: 'Buy',
+  }
+};
+
+function updatePredictionResult(stockName) {
+  const predictionBox = document.getElementById('predictionResult');
+  
+  // 간단한 랜덤 값 예측 시뮬레이션
+  const week = (Math.random() * 100 - 50).toFixed(1); // -50% ~ +50%
+  const month = (Math.random() * 100 - 50).toFixed(1);
+  const year = (Math.random() * 150 - 25).toFixed(1);
+
+  predictionBox.innerHTML = `
+    <h2>주식예측결과 - ${stockName}</h2>
+    <div class="result-row"><span>일주일 뒤</span><span class="percent ${week >= 0 ? 'up' : 'down'}">${week}%</span></div>
+    <div class="result-row"><span>한달 뒤</span><span class="percent ${month >= 0 ? 'up' : 'down'}">${month}%</span></div>
+    <div class="result-row"><span>일년 뒤</span><span class="percent ${year >= 0 ? 'up' : 'down'}">${year}%</span></div>
+  `;
+}
+
+function updateRecommendation(stockName) {
+  const recommendBox = document.getElementById('recommendBox');
+
+  const statusList = ['Buy', 'Sell', 'Long', 'Short'];
+  const badgeClass = {
+    Buy: 'buy',
+    Sell: 'sell',
+    Long: 'long',
+    Short: 'short'
+  };
+
+  // 임의 추천 3개 생성
+  const rows = Array.from({ length: 3 }, (_, i) => {
+    const randStock = ['삼성전자', '카카오', 'LG화학', '현대차', '셀트리온', '네이버', 'SK하이닉스', '삼성SDI', '포스코홀딩스', '한화솔루션'][Math.floor(Math.random() * 10)];
+    const status = statusList[Math.floor(Math.random() * 4)];
+    return `<tr><td>00${i + 1}</td><td>${randStock}</td><td><span class="badge ${badgeClass[status]}">${status}</span></td></tr>`;
+  }).join('');
+
+  // 항상 선택된 종목도 포함
+  const selectedStatus = statusList[Math.floor(Math.random() * 4)];
+  const selectedRow = `<tr><td>0000</td><td>${stockName}</td><td><span class="badge ${badgeClass[selectedStatus]}">${selectedStatus}</span></td></tr>`;
+
+  recommendBox.innerHTML = `
+    <h2>매수/매도 추천</h2>
+    <table>
+      <colgroup>
+        <col style="width: 20%;">
+        <col style="width: 50%;">
+        <col style="width: 30%;">
+      </colgroup>
+      <thead>
+        <tr><th>종목ID</th><th>종목명</th><th>상태</th></tr>
+      </thead>
+      <tbody>
+        ${selectedRow + rows}
+      </tbody>
+    </table>
+  `;
+}
+
+    

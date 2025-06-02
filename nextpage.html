@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="next-style.css" />
 </head>
+
 <body>
 <!-- 오른쪽 상단 고정 시간 알림창 -->
   <div id="timeNotification" class="time-notification"></div>
@@ -65,33 +66,34 @@
         </div>
 
         <!-- 주식 예측 결과 -->
-        <div class="result-box">
-          <h2>주식예측결과</h2>
-          <div class="result-row"><span>일주일 뒤</span><span class="percent up">+62%</span></div>
-          <div class="result-row"><span>한달 뒤</span><span class="percent down">-12%</span></div>
-          <div class="result-row"><span>일년 뒤</span><span class="percent up">+105%</span></div>
+        <div class="result-box" id="predictionResult">
+        <h2>주식예측결과</h2>
+        <div class="result-row"><span>일주일 뒤</span><span class="percent up">+62%</span></div>
+        <div class="result-row"><span>한달 뒤</span><span class="percent down">-12%</span></div>
+        <div class="result-row"><span>일년 뒤</span><span class="percent up">+105%</span></div>
         </div>
 
-
-<div class="recommend-box">
-  <h2>매수/매도 추천</h2>
-  <table>
-    <colgroup>
-      <col style="width: 20%;">
-      <col style="width: 50%;">
-      <col style="width: 30%;">
-    </colgroup>
-    <thead>
-      <tr><th>종목ID</th><th>종목명</th><th>상태</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>0001</td><td>삼성전자</td><td><span class="badge buy">Buy</span></td></tr>
-      <tr><td>0002</td><td>카카오</td><td><span class="badge sell">Sell</span></td></tr>
-      <tr><td>0003</td><td>LG화학</td><td><span class="badge long">Long</span></td></tr>
-      <tr><td>0004</td><td>현대차</td><td><span class="badge short">Short</span></td></tr>
-    </tbody>
-  </table>
+        <!-- 매수/매도 추천 -->
+        <div class="recommend-box" id="recommendBox">
+        <h2>매수/매도 추천</h2>
+        <table>
+            <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 50%;">
+            <col style="width: 30%;">
+            </colgroup>
+            <thead>
+            <tr><th>종목ID</th><th>종목명</th><th>상태</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>0001</td><td>삼성전자</td><td><span class="badge buy">Buy</span></td></tr>
+            <tr><td>0002</td><td>카카오</td><td><span class="badge sell">Sell</span></td></tr>
+            <tr><td>0003</td><td>LG화학</td><td><span class="badge long">Long</span></td></tr>
+            <tr><td>0004</td><td>현대차</td><td><span class="badge short">Short</span></td></tr>
+            </tbody>
+        </table>
 </div>
+
 
 
 
