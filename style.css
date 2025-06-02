@@ -35,7 +35,10 @@ body {
 }
 
 .menu-bottom {
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;         /* 버튼 간격 넓히기 */
+  margin-top: 450px;  /* 사이드바 아래에서 위로 올리기 */
   margin-bottom: 30px;
 }
 
